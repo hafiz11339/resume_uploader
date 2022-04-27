@@ -20,10 +20,21 @@
   </script>
 </head>
 <body>
-    <div class="container mb-5">
-        <h1 class="alert-success text-center">Resume Uploader</h1>
+
+
+    {% if messages %}
+        <ul class="messages">
+            {% for message in messages %}
+            <div class="alert alert-primary" role="alert"> <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+            </div>
+                {% endfor %}
+        </ul>
+    {% endif %}
+    <div class="container mb-10">
+       <h1 class="text-center mb-5" id="main-heading">Resume Uploader</h1>
         <div class="row">
             <div class="col-sm-8">
+
                 <form action="{%url 'home'%}" method="post" enctype="multipart/form-data" class="shadow p-5">
 
                     {%csrf_token%}
@@ -41,9 +52,9 @@
                 <h2 class="text-center mb-3"><u>List of candidate</u></h2>
 
                 {%for can in candidates%}
-                    {{can.id}}
-                    <a href="{%url 'detail' can.id%}">{{can.name}}</a>
-                    {{can.dob}}
+                    <p>Candidate ID: {{can.id}}</p>
+                    <p>Name: <a href="{%url 'detail' can.id%}">{{can.name}}</a> </p>
+                    <p>Date Of Birth: {{can.dob}} </p>
                     <hr>
                 {%endfor%}
 

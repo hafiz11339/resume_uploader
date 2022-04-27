@@ -6,3 +6,16 @@
 #id_gender > li{
     padding-left: 20px;
 }
+#main-heading{
+    padding: 20px;
+    animation: myfirst 5s infinite;
+
+}
+
+@keyframes myfirst
+{
+    0%      {color:floralwhite;}
+    25%     {color:aqua;}
+    75%     {color:green;}
+    100%    {color:pink;}
+}

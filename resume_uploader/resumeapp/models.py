@@ -1,5 +1,7 @@
 from django.db import models
 
+from django.db.models.signals import post_save
+
 STATE_CHOICES =(
     ("Lahore","Lahore"),
     ("Multan","Multan"),
@@ -21,3 +23,7 @@ class Resume(models.Model):
     email = models.EmailField()
     profile_img = models.ImageField(upload_to='profileimg',blank=True,null=True)
     my_file = models.FileField(upload_to='doc',blank=True,null=True)
+
+
+    def __str__(self):
+        return self.email
