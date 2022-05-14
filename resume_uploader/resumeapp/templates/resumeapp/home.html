@@ -32,6 +32,10 @@
     {% endif %}
     <div class="container mb-10">
        <h1 class="text-center mb-5" id="main-heading">Resume Uploader</h1>
+        <a href="{%url 'logout'%}"><button class="btn btn-outline-danger">Logout</button></a>
+        <a href="{%url 'list'%}"><button class="btn btn-outline-primary">List Page</button></a>
+
+
         <div class="row">
             <div class="col-sm-8">
 
@@ -48,17 +52,7 @@
                 </form>
 
             </div>
-            <div class="col-sm-4">
-                <h2 class="text-center mb-3"><u>List of candidate</u></h2>
 
-                {%for can in candidates%}
-                    <p>Candidate ID: {{can.id}}</p>
-                    <p>Name: <a href="{%url 'detail' can.id%}">{{can.name}}</a> </p>
-                    <p>Date Of Birth: {{can.dob}} </p>
-                    <hr>
-                {%endfor%}
-
-            </div>
         </div>
        
     </div>

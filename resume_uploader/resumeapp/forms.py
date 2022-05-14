@@ -1,5 +1,7 @@
+from pyexpat import model
 from django import forms
-from .models import Resume
+from django.contrib.auth.forms import UserCreationForm
+from .models import Resume,Profile
 GENDER_CHOICES = [
     ("Male","Male"),
     ("Female","Female")
@@ -32,4 +34,19 @@ class ResumeForm(forms.ModelForm):
             'email':forms.EmailInput(attrs={'class':'form-control'}),
         }
 
+
+class CustomUserForm(UserCreationForm):
+    class Meta:
+        model = Profile
+        fields = ['username','email']
+
+
+class LoginForm(forms.ModelForm):
+    class Meta:
+        model = Profile
+        fields = ['email','password']
+        widgets = {
+            "password":forms.PasswordInput()
+            
+        }
 

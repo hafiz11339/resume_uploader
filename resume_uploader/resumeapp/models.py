@@ -1,5 +1,6 @@
 from django.db import models
-
+from django.contrib.auth.models import AbstractUser
+from .managers import CustomUserManager
 from django.db.models.signals import post_save
 
 STATE_CHOICES =(
@@ -26,4 +27,12 @@ class Resume(models.Model):
 
 
     def __str__(self):
+        return self.email
+
+class Profile(AbstractUser):
+    email = models.EmailField(unique=True)
+    USERNAME_FIELD = 'email'
+    REQUIRED_FIELDS = []
+    objects = CustomUserManager()
+    def __str__(self) -> str:
         return self.email
